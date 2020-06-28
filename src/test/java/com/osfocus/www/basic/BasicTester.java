@@ -70,4 +70,14 @@ public class BasicTester {
         assertArrayEquals(sortArr1, c03InsertionSortResult1);
         assertArrayEquals(sortArr2, c03InsertionSortResult2);
     }
+
+    @Test
+    public void testBSExist() {
+        int num1 = sortArr1[(int) ((NUM_OF_INT)*Math.random())];
+        int num2 = sortArr2[(int) ((NUM_OF_INT)*Math.random())];
+        assertEquals(C04_BSExist.slowCheckExist(sortArr1, num1),
+                     C04_BSExist.exist(sortArr1, num1));
+        assertEquals(C04_BSExist.slowCheckExist(sortArr2, num2),
+                     C04_BSExist.exist(sortArr2, num2));
+    }
 }
