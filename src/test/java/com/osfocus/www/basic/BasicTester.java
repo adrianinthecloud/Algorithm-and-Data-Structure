@@ -12,21 +12,33 @@ import static org.junit.Assert.assertEquals;
 public class BasicTester {
     private static final int NUM_OF_INT = 100;
     private static final int MAX_NUM = 1000;
-    private static final int[] unsortArr1 = new int[NUM_OF_INT];
-    private static final int[] unsortArr2 = new int[NUM_OF_INT];
+    private static final int[] unsortArr1;
+    private static final int[] unsortArr2;
     private static final int[] sortArr1;
     private static final int[] sortArr2;
 
     static {
-        Random r = new Random();
-        for (int i = 0; i < NUM_OF_INT; i++) {
-            unsortArr1[i] = r.nextInt(MAX_NUM);
-            unsortArr2[i] = r.nextInt(MAX_NUM);
-        }
+//        Random r = new Random();
+//        for (int i = 0; i < NUM_OF_INT; i++) {
+//            unsortArr1[i] = r.nextInt(MAX_NUM);
+//            unsortArr2[i] = r.nextInt(MAX_NUM);
+//        }
+        unsortArr1 = generateRandomArray();
+        unsortArr2 = generateRandomArray();
+
         sortArr1 = unsortArr1.clone();
         sortArr2 = unsortArr2.clone();
         Arrays.sort(sortArr1);
         Arrays.sort(sortArr2);
+    }
+
+    public static int[] generateRandomArray() {
+        int[] arr = new int[NUM_OF_INT];
+        for (int i = 0; i < NUM_OF_INT; i++) {
+            arr[i] = (int) ((NUM_OF_INT+1) * Math.random()) - (int) ((NUM_OF_INT+1) * Math.random());
+        }
+
+        return arr;
     }
 
     @Test
