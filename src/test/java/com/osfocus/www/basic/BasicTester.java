@@ -87,6 +87,24 @@ public class BasicTester {
     }
 
     @Test
+    public void testBSLocalMin() {
+        int[] arr = new int[]{1,2};
+        assertEquals(0, C06_BSLocalMin.getLocalMinIndex(arr));
+
+        int[] arr2 = new int[]{5,3,1,7,9};
+        assertEquals(2, C06_BSLocalMin.getLocalMinIndex(arr2));
+
+        int[] arr3 = new int[]{9,8,1,3};
+        assertEquals(2, C06_BSLocalMin.getLocalMinIndex(arr3));
+
+        int[] arr4 = new int[]{9,8,3,2};
+        assertEquals(3, C06_BSLocalMin.getLocalMinIndex(arr4));
+
+        int[] arr5 = new int[]{9,8,3,2,1,0};
+        assertEquals(5, C06_BSLocalMin.getLocalMinIndex(arr5));
+    }
+
+    @Test
     public void testEventTimesOddTimes() {
         int[] arr = new int[]{3,2,3,2,99,5,1,1,99,99,100,202,100,5,202};
         assertEquals(99, C07_EvenTimesOddTimes.getOddTimesNum(arr));
