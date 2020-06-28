@@ -12,10 +12,10 @@ public class C04_BSExist {
 
         int L = 0;
         int R = sortedArr.length - 1;
-        while (R >= L) {
+        while (L < R) {
             int mid = L + ((R-L) >> 1);
             if (sortedArr[mid] == num) return true;
-            if (sortedArr[mid] < num) {
+            if (sortedArr[mid] > num) {
                 R = mid - 1;
             } else {
                 L = mid + 1;
