@@ -11,18 +11,12 @@ import static org.junit.Assert.assertEquals;
 
 public class BasicTester {
     private static final int NUM_OF_INT = 100;
-    private static final int MAX_NUM = 1000;
     private static final int[] unsortArr1;
     private static final int[] unsortArr2;
     private static final int[] sortArr1;
     private static final int[] sortArr2;
 
     static {
-//        Random r = new Random();
-//        for (int i = 0; i < NUM_OF_INT; i++) {
-//            unsortArr1[i] = r.nextInt(MAX_NUM);
-//            unsortArr2[i] = r.nextInt(MAX_NUM);
-//        }
         unsortArr1 = generateRandomArray();
         unsortArr2 = generateRandomArray();
 
@@ -90,5 +84,18 @@ public class BasicTester {
                      C05_BSNearLeft.nearestIndex(sortArr1, num1));
         assertEquals(C05_BSNearLeft.test(sortArr2, num2),
                      C05_BSNearLeft.nearestIndex(sortArr2, num2));
+    }
+
+    @Test
+    public void testEventTimesOddTimes() {
+        int[] arr = new int[]{3,2,3,2,99,5,1,1,99,99,100,202,100,5,202};
+        assertEquals(99, C07_EvenTimesOddTimes.getOddTimesNum(arr));
+
+        int[] arr2 = new int[arr.length+1];
+        System.arraycopy(arr, 0, arr2, 0, arr.length);
+        arr2[arr2.length-1] = 100;
+
+        int[] twoOddOcrNums = C07_EvenTimesOddTimes.getTwoOddTimesNumbers(arr2);
+        assertArrayEquals(new int[]{99,100}, twoOddOcrNums);
     }
 }
