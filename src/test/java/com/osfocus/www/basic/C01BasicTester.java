@@ -8,7 +8,7 @@ import java.util.Arrays;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-public class BasicTester {
+public class C01BasicTester {
     private static final int NUM_OF_INT = 100;
     private static final int[] unsortArr1;
     private static final int[] unsortArr2;
