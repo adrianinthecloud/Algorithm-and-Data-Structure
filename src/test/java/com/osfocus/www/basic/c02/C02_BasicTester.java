@@ -163,4 +163,26 @@ public class C02_BasicTester {
         minStack.pop();
         assertEquals(99, minStack.getMin().intValue());
     }
+
+    @Test
+    public void testTwoStacksImplementQueue() {
+        C06_TwoStacksImplementQueue<Integer> queue = new C06_TwoStacksImplementQueue<>();
+        assertTrue(queue.isEmpty());
+
+        queue.offer(1);
+        assertEquals(1, queue.peak().intValue());
+
+        queue.offer(11);
+        queue.offer(133);
+        assertEquals(1, queue.peak().intValue());
+        int head = queue.poll();
+        assertEquals(1, head);
+        assertEquals(11, queue.peak().intValue());
+        assertEquals(2, queue.size());
+        queue.offer(99);
+        queue.poll();
+        queue.poll();
+        head = queue.poll();
+        assertEquals(99, head);
+    }
 }
