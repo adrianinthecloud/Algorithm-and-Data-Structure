@@ -3,13 +3,10 @@ package com.osfocus.www.basic.c02;
 import com.osfocus.www.basic.c01.C03_Stack;
 import org.junit.Test;
 
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
 
 public class C02_BasicTester {
     private static final int MAX_NUM = 1000;
@@ -100,7 +97,7 @@ public class C02_BasicTester {
         queue.offer(199);
         queue.offer(169);
 
-        assertEquals(99, queue.peak().intValue());
+        assertEquals(99, queue.peek().intValue());
         assertEquals(5, queue.size());
         int headVal = queue.poll();
         assertEquals(99, headVal);
@@ -170,19 +167,47 @@ public class C02_BasicTester {
         assertTrue(queue.isEmpty());
 
         queue.offer(1);
-        assertEquals(1, queue.peak().intValue());
+        assertEquals(1, queue.peek().intValue());
 
         queue.offer(11);
         queue.offer(133);
-        assertEquals(1, queue.peak().intValue());
+        assertEquals(1, queue.peek().intValue());
         int head = queue.poll();
         assertEquals(1, head);
-        assertEquals(11, queue.peak().intValue());
+        assertEquals(11, queue.peek().intValue());
         assertEquals(2, queue.size());
         queue.offer(99);
         queue.poll();
         queue.poll();
         head = queue.poll();
         assertEquals(99, head);
+    }
+
+    @Test
+    public void testTwoQueuesImplementStack() {
+        C07_TwoQueuesImplementStack<Integer> myStack = new C07_TwoQueuesImplementStack<>();
+        Stack<Integer> test = new Stack<>();
+        int testTime = 1000000;
+        int max = 1000000;
+        for (int i = 0; i < testTime; i++) {
+            if (myStack.isEmpty()) {
+                assertTrue(test.isEmpty());
+                int num = (int) (Math.random() * max);
+                myStack.push(num);
+                test.push(num);
+            } else {
+                if (Math.random() < 0.25) {
+                    int num = (int) (Math.random() * max);
+                    myStack.push(num);
+                    test.push(num);
+                } else if (Math.random() < 0.5) {
+                    assertFalse(!myStack.peek().equals(test.peek()));
+                } else if (Math.random() < 0.75) {
+                    assertFalse(!myStack.pop().equals(test.pop()));
+                } else {
+                    assertFalse(myStack.isEmpty() != test.isEmpty());
+                }
+            }
+        }
     }
 }

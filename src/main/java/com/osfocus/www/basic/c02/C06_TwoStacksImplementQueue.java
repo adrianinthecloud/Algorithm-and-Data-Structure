@@ -21,7 +21,7 @@ public class C06_TwoStacksImplementQueue<T> {
         }
     }
 
-    public T peak() {
+    public T peek() {
         if (isEmpty()) throw new EmptyStackException();
 
         if (dataStack.size() == 0) {

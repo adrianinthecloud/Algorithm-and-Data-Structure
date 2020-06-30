@@ -18,7 +18,7 @@ public class C03_Queue<T> {
         return size() == 0;
     }
 
-    public T peak() {
+    public T peek() {
         return head.value;
     }
 
@@ -113,7 +113,7 @@ public class C03_Queue<T> {
         queue.offer(9);
         queue.print();
         System.out.println();
-        System.out.println(queue.peak());
+        System.out.println(queue.peek());
 
         queue.print();
     }
