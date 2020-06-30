@@ -1,4 +1,4 @@
-package com.osfocus.www.basic;
+package com.osfocus.www.basic.c02;
 
 import static org.junit.Assert.*;
 
@@ -10,7 +10,7 @@ import com.osfocus.www.basic.c02.DoublyLinkedList;
 import org.junit.*;
 
 // Gives credit to https://github.com/williamfiset/data-structures for this tester class.
-public class C02LinkedListTest {
+public class LinkedListTest {
 
     static final int LOOPS = 10000;
     static final int TEST_SZ = 40;

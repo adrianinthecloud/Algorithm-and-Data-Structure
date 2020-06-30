@@ -1,4 +1,4 @@
-package com.osfocus.www.basic;
+package com.osfocus.www.basic.c02;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -9,7 +9,7 @@ import com.osfocus.www.basic.c02.DynamicArray;
 import org.junit.Test;
 
 // Gives credit to https://github.com/williamfiset/data-structures for this tester class.
-public class C02DynamicArrayTest {
+public class DynamicArrayTest {
     @Test
     public void testEmptyList() {
         DynamicArray<Integer> list = new DynamicArray<>();

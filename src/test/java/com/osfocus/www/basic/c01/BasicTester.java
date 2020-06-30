@@ -1,4 +1,4 @@
-package com.osfocus.www.basic;
+package com.osfocus.www.basic.c01;
 
 import com.osfocus.www.basic.c01.*;
 import org.junit.Test;
@@ -8,7 +8,7 @@ import java.util.Arrays;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-public class C01BasicTester {
+public class BasicTester {
     private static final int NUM_OF_INT = 100;
     private static final int[] unsortArr1;
     private static final int[] unsortArr2;
