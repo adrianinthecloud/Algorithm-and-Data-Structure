@@ -4,6 +4,7 @@ import com.osfocus.www.basic.c01.C03_Stack;
 import org.junit.Test;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertFalse;
@@ -209,5 +210,19 @@ public class C02_BasicTester {
                 }
             }
         }
+    }
+
+    @Test
+    public void testGetMax() {
+        int[] arr = new int[NUM_OF_ITEMS];
+
+        for (int i = 0; i < NUM_OF_ITEMS; i++) {
+            arr[i] = (int) ((MAX_NUM + 1) * Math.random());
+        }
+
+        int max = C08_GetMax.getMax(arr);
+        OptionalInt expectedMax = Arrays.stream(arr).max();
+
+        assertEquals(expectedMax.getAsInt(), max);
     }
 }
