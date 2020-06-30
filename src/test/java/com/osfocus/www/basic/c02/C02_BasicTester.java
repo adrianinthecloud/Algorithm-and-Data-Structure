@@ -127,4 +127,20 @@ public class C02_BasicTester {
         assertEquals(99, stack.pop().intValue());
         assertTrue(stack.isEmpty());
     }
+
+    @Test(expected=RuntimeException.class)
+    public void testRingArray() {
+        C04_RingArray<Integer> ringArray = new C04_RingArray<>(5);
+        ringArray.push(3);
+        ringArray.push(11);
+        ringArray.push(99);
+        ringArray.push(55);
+        ringArray.push(133);
+
+        int last = ringArray.pop();
+        assertEquals(133, last);
+
+        ringArray.push(7);
+        ringArray.push(1);
+    }
 }
