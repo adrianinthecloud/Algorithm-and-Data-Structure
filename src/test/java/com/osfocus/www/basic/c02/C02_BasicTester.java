@@ -143,4 +143,24 @@ public class C02_BasicTester {
         ringArray.push(7);
         ringArray.push(1);
     }
+
+    @Test
+    public void testMinStack() {
+        C05_MinStack<Integer> minStack = new C05_MinStack<>();
+        minStack.push(99);
+        minStack.push(102);
+        minStack.push(3);
+        minStack.push(199);
+        minStack.push(888);
+
+        assertEquals(3, minStack.getMin().intValue());
+        minStack.push(1);
+        assertEquals(1, minStack.getMin().intValue());
+
+        minStack.pop();
+        minStack.pop();
+        minStack.pop();
+        minStack.pop();
+        assertEquals(99, minStack.getMin().intValue());
+    }
 }
