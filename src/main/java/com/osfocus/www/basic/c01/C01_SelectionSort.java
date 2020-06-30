@@ -1,4 +1,4 @@
-package com.osfocus.www.basic;
+package com.osfocus.www.basic.c01;
 
 public class C01_SelectionSort {
     public static void selectionSort(int[] arr) {

@@ -1,4 +1,4 @@
-package com.osfocus.www.basic;
+package com.osfocus.www.basic.c01;
 
 public class C03_InsertionSort {
     public static void insertionSort(int[] arr) {

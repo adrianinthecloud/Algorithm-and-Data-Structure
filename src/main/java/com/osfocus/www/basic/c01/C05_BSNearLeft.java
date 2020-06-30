@@ -1,4 +1,4 @@
-package com.osfocus.www.basic;
+package com.osfocus.www.basic.c01;
 
 public class C05_BSNearLeft {
     public static int nearestIndex(int[] sortedArr, int value) {

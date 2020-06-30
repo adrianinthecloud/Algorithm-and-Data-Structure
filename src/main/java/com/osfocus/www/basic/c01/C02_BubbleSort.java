@@ -1,4 +1,4 @@
-package com.osfocus.www.basic;
+package com.osfocus.www.basic.c01;
 
 public class C02_BubbleSort {
     public static void bubbleSort(int[] arr) {

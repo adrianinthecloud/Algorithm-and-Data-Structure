@@ -1,4 +1,4 @@
-package com.osfocus.www.basic;
+package com.osfocus.www.basic.c01;
 
 public class C07_EvenTimesOddTimes {
     // get the only one odd times occurrence number in an array.
