@@ -19,20 +19,19 @@ public class C01_MergeSort {
     public static void merge(int[] arr, int L, int M, int R) {
         if (L == R) return;
 
-        int[] tmpArr = new int[R - L + 1];
-        int i = 0;
         int p1 = L;
-        int p2 = M + 1;
+        int p2 = M+1;
+        int i = 0;
+        int[] tmpArr = new int[R - L + 1];
+
         while (p1 <= M && p2 <= R) {
             tmpArr[i++] = arr[p1] <= arr[p2] ? arr[p1++] : arr[p2++];
         }
 
-        // process remaining items
         while (p1 <= M) {
             tmpArr[i++] = arr[p1++];
         }
 
-        // process remaining items
         while (p2 <= R) {
             tmpArr[i++] = arr[p2++];
         }
@@ -42,15 +41,32 @@ public class C01_MergeSort {
         }
     }
 
+    // non recursive implementation
     public static void mergeSort2(int[] arr) {
         if (arr == null || arr.length < 2) return;
 
+        int mergeSize = 1; // size of left group
+        int N = arr.length;
 
-    }
+        while (mergeSize < N) {
+            int L = 0;
 
-    public static boolean isEqual(int[] arr1, int[] arr2) {
+            while (L < N) {
+                int M = L + mergeSize - 1;
+                if (M >= N) break;
+                // control boundary L...M   M+1...R(mergeSize)
+                int R = Math.min(M + mergeSize, N-1);
+                merge(arr, L, M, R);
+                L = R + 1;
+            }
 
-        return false;
+            // avoid overflow
+            if (mergeSize > N / 2) {
+                break;
+            }
+
+            mergeSize <<= 1;
+        }
     }
 
     public static void printArray(int[] arr) {
