@@ -33,4 +33,19 @@ public class C04_BasicTester {
             assertArrayEquals(systemSortedArr, heapSortedArr);
         }
     }
+
+    @Test
+    public void SortArrayDistanceLessThanKTest() {
+        for (int i = 0; i < 100; i++) {
+            int[] sampleArr = SortArrayDistanceLessThanK.randomArrayNoMoveMoreK(MAX_NUM, NUM_OF_ITEMS, 5);
+            int[] systemSortedArr = new int[sampleArr.length];
+
+            System.arraycopy(sampleArr, 0, systemSortedArr, 0, sampleArr.length);
+
+            Arrays.sort(systemSortedArr);
+            SortArrayDistanceLessThanK.sorted(sampleArr, 5);
+
+            assertArrayEquals(systemSortedArr, sampleArr);
+        }
+    }
 }
