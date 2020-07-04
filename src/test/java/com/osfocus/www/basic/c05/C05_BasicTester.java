@@ -2,8 +2,10 @@ package com.osfocus.www.basic.c05;
 
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 public class C05_BasicTester {
@@ -40,5 +42,25 @@ public class C05_BasicTester {
         tree.insert("abcPWC");
         assertEquals(2, tree.numOfPrefix("abc"));
         assertEquals(0, tree.search("abcx"));
+    }
+
+    @Test
+    public void CountSortTest() {
+        int maxNum = 200;
+        int maxSize = 200;
+
+        int[] arr = new int[maxSize];
+
+        for (int i = 0; i < maxSize; i++) {
+            arr[i] = (int) ((maxNum + 1) * Math.random());
+        }
+
+        int[] systemSortedArr = new int[arr.length];
+
+        System.arraycopy(arr, 0, systemSortedArr, 0, arr.length);
+        Arrays.sort(systemSortedArr);
+        C03_CountSort.countSort(arr);
+
+        assertArrayEquals(systemSortedArr, arr);
     }
 }
