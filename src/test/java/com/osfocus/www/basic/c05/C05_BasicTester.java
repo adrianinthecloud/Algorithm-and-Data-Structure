@@ -63,4 +63,26 @@ public class C05_BasicTester {
 
         assertArrayEquals(systemSortedArr, arr);
     }
+
+    @Test
+    public void RadixSortTest() {
+        int maxNum = 200;
+        int maxSize = 200;
+
+        for (int k = 0; k < 100; k++) {
+            int[] arr = new int[maxSize];
+
+            for (int i = 0; i < maxSize; i++) {
+                arr[i] = (int) ((maxNum + 1) * Math.random());
+            }
+
+            int[] systemSortedArr = new int[arr.length];
+
+            System.arraycopy(arr, 0, systemSortedArr, 0, arr.length);
+            Arrays.sort(systemSortedArr);
+            C04_RadixSort.radixSort(arr);
+
+            assertArrayEquals(systemSortedArr, arr);
+        }
+    }
 }
