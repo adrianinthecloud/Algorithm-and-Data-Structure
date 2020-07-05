@@ -1,0 +1,32 @@
+@startuml
+
+interface IStrategy {
+    compare(T o1, T o2): int;
+}
+
+IStrategy <|-- DogComparator
+
+IStrategy <|-- CatComparator
+
+IStrategy <|-- OtherComparator
+
+class DogComparator<Dog> {
+    +compare(Dog o1, Dog o2): int
+}
+
+class CatComparator<Cat> {
+    +compare(Cat o1, Cat o2): int
+}
+
+class OtherComparator<Other> {
+    +compare(Other o1, Other o2): int
+}
+
+class Context {
+    -strategy: IStrategy,
+    +do_something(): void
+}
+
+Context }|-- IStrategy
+
+@enduml
