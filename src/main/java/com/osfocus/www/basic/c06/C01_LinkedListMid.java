@@ -1,5 +1,8 @@
 package com.osfocus.www.basic.c06;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class C01_LinkedListMid {
     public static class Node {
         public int value;
@@ -70,6 +73,66 @@ public class C01_LinkedListMid {
         }
 
         return slow;
+    }
+
+    public static Node right1(Node head) {
+        if (head == null) return null;
+
+        List<Node> arr = new ArrayList<>();
+
+        Node cur = head;
+        while (cur != null) {
+            arr.add(cur);
+
+            cur = cur.next;
+        }
+
+        return arr.get((arr.size() - 1) / 2);
+    }
+
+    public static Node right2(Node head) {
+        if (head == null) return null;
+
+        List<Node> arr = new ArrayList<>();
+
+        Node cur = head;
+        while (cur != null) {
+            arr.add(cur);
+
+            cur = cur.next;
+        }
+
+        return arr.get(arr.size() / 2);
+    }
+
+    public static Node right3(Node head) {
+        if (head == null || head.next == null || head.next.next == null) return null;
+
+        List<Node> arr = new ArrayList<>();
+
+        Node cur = head;
+        while (cur != null) {
+            arr.add(cur);
+
+            cur = cur.next;
+        }
+
+        return arr.get((arr.size() - 3) / 2);
+    }
+
+    public static Node right4(Node head) {
+        if (head == null || head.next == null) return null;
+
+        List<Node> arr = new ArrayList<>();
+
+        Node cur = head;
+        while (cur != null) {
+            arr.add(cur);
+
+            cur = cur.next;
+        }
+
+        return arr.get((arr.size() - 2) / 2);
     }
 
     public static void main(String[] args) {
