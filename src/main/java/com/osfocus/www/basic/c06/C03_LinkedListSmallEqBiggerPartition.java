@@ -70,8 +70,13 @@ public class C03_LinkedListSmallEqBiggerPartition {
             next = (next != null) ? next.next : null;
         }
 
-        sT.next = eH;
-        eT.next = bH;
+        if (sT != null) {
+            sT.next = (eH != null) ? eH : bH;
+        }
+
+        if (eT != null) {
+            eT.next = bH;
+        }
 
         return sH;
     }
