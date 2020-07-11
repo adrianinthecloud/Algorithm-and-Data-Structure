@@ -64,4 +64,27 @@ public class C06_BasicTest {
         assertTrue(C02_IsPalindromeList.isPalindrome2(head));
         assertTrue(C02_IsPalindromeList.isPalindrome3(head));
     }
+
+    @Test
+    public void CopyListWithRandomTest() {
+        // 9-0-3-8-1
+        C04_CopyListWithRandom.Node head = new C04_CopyListWithRandom.Node(9);
+        head.next = new C04_CopyListWithRandom.Node(0);
+        head.next.next = new C04_CopyListWithRandom.Node(3);
+        head.next.next.next = new C04_CopyListWithRandom.Node(8);
+        head.next.next.next.next = new C04_CopyListWithRandom.Node(1);
+
+        head.next.random = head;
+        head.next.next.random = head.next;
+        head.next.next.next.random = head;
+
+
+        C04_CopyListWithRandom.Node newHead = C04_CopyListWithRandom.deepClone1(head);
+
+        C04_CopyListWithRandom.Node newHead2 = C04_CopyListWithRandom.deepClone2(head);
+
+        assertTrue(C04_CopyListWithRandom.equals(head, newHead));
+
+        assertTrue(C04_CopyListWithRandom.equals(head, newHead2));
+    }
 }
