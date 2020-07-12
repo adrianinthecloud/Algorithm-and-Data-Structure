@@ -87,4 +87,47 @@ public class C06_BasicTest {
 
         assertTrue(C04_CopyListWithRandom.equals(head, newHead2));
     }
+
+    @Test
+    public void FindFirstIntersectNodeTeest() {
+        // 1->2->3->4->5->6->7->null
+        C05_FindFirstIntersectNode.Node head1 = new C05_FindFirstIntersectNode.Node(1);
+        head1.next = new C05_FindFirstIntersectNode.Node(2);
+        head1.next.next = new C05_FindFirstIntersectNode.Node(3);
+        head1.next.next.next = new C05_FindFirstIntersectNode.Node(4);
+        head1.next.next.next.next = new C05_FindFirstIntersectNode.Node(5);
+        head1.next.next.next.next.next = new C05_FindFirstIntersectNode.Node(6);
+        head1.next.next.next.next.next.next = new C05_FindFirstIntersectNode.Node(7);
+
+        // 0->9->8->6->7->null
+        C05_FindFirstIntersectNode.Node head2 = new C05_FindFirstIntersectNode.Node(0);
+        head2.next = new C05_FindFirstIntersectNode.Node(9);
+        head2.next.next = new C05_FindFirstIntersectNode.Node(8);
+        head2.next.next.next = head1.next.next.next.next.next; // 8->6
+        assertEquals(6, C05_FindFirstIntersectNode.getIntersectNode(head1, head2).value);
+
+        // 1->2->3->4->5->6->7->4...
+        head1 = new C05_FindFirstIntersectNode.Node(1);
+        head1.next = new C05_FindFirstIntersectNode.Node(2);
+        head1.next.next = new C05_FindFirstIntersectNode.Node(3);
+        head1.next.next.next = new C05_FindFirstIntersectNode.Node(4);
+        head1.next.next.next.next = new C05_FindFirstIntersectNode.Node(5);
+        head1.next.next.next.next.next = new C05_FindFirstIntersectNode.Node(6);
+        head1.next.next.next.next.next.next = new C05_FindFirstIntersectNode.Node(7);
+        head1.next.next.next.next.next.next = head1.next.next.next; // 7->4
+
+        // 0->9->8->2...
+        head2 = new C05_FindFirstIntersectNode.Node(0);
+        head2.next = new C05_FindFirstIntersectNode.Node(9);
+        head2.next.next = new C05_FindFirstIntersectNode.Node(8);
+        head2.next.next.next = head1.next; // 8->2
+        assertEquals(2, C05_FindFirstIntersectNode.getIntersectNode(head1, head2).value);
+
+        // 0->9->8->6->4->5->6..
+        head2 = new C05_FindFirstIntersectNode.Node(0);
+        head2.next = new C05_FindFirstIntersectNode.Node(9);
+        head2.next.next = new C05_FindFirstIntersectNode.Node(8);
+        head2.next.next.next = head1.next.next.next.next.next; // 8->6
+        assertEquals(4, C05_FindFirstIntersectNode.getIntersectNode(head1, head2).value);
+    }
 }
