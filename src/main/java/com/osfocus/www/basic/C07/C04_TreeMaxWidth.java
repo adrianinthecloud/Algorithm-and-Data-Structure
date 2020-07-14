@@ -55,16 +55,52 @@ public class C04_TreeMaxWidth {
         return max;
     }
 
-    public static void main(String[] args) {
-        //       1
-        //     2   3
-        //    4 5    6
-        Node head = new Node(1);
-        head.left = new Node(2);
-        head.right = new Node(3);
-        head.left.left = new Node(4);
-        head.left.right = new Node(5);
-        head.right.right = new Node (6);
+    public static int maxWidthWithoutMap(Node head) {
+        if (head == null) return 0;
 
+        int max = 0;
+        int curLevelNodes = 0;
+        Node curEnd = head;
+        Node nextEnd = null;
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(head);
+
+        while (!queue.isEmpty()) {
+            Node curNode = queue.poll();
+
+            if (curNode.left != null) {
+                queue.add(curNode.left);
+                nextEnd = curEnd.left;
+            }
+
+            if (curNode.right != null) {
+                queue.add(curNode.right);
+                nextEnd = curEnd.right;
+            }
+
+            curLevelNodes++;
+
+            if (curNode == curEnd) {
+                curEnd = nextEnd;
+                max = Math.max(curLevelNodes, max);
+                curLevelNodes = 0;
+            }
+        }
+
+        return max;
+    }
+
+    public static Node generateRandomBST(int maxLevel, int maxValue) {
+        return generate(1, maxLevel, maxValue);
+    }
+
+    private static Node generate(int level, int maxLevel, int maxValue) {
+        if (level > maxLevel) return null;
+
+        Node head = new Node((int) ((maxValue + 1) * Math.random()));
+        head.left = generate(level + 1, maxLevel, maxValue);
+        head.right = generate(level + 1, maxLevel, maxValue);
+
+        return head;
     }
 }

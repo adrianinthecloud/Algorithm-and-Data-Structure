@@ -84,5 +84,14 @@ public class C07_BasicTest {
         head.right.right = new C04_TreeMaxWidth.Node(6);
 
         assertEquals(3, C04_TreeMaxWidth.maxWidthUseMap(head));
+        assertEquals(3, C04_TreeMaxWidth.maxWidthWithoutMap(head));
+
+        int maxLevel = 10;
+        int maxValue = 10000;
+        int testCases = 1000;
+        for (int i = 0; i < testCases; i++) {
+            C04_TreeMaxWidth.Node bst = C04_TreeMaxWidth.generateRandomBST(maxLevel, maxValue);
+            assertEquals(C04_TreeMaxWidth.maxWidthUseMap(head), C04_TreeMaxWidth.maxWidthWithoutMap(head));
+        }
     }
 }
