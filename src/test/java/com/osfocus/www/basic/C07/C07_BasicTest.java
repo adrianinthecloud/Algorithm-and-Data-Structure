@@ -52,4 +52,25 @@ public class C07_BasicTest {
         output = new String(baos.toByteArray());
         assertEquals("pos-order2: 4 5 2 6 7 3 1 \n", output);
     }
+
+    @Test
+    public void LevelTraversalTest() {
+        C03_LevelTraversalBT.Node head = new C03_LevelTraversalBT.Node(1);
+        head.left = new C03_LevelTraversalBT.Node(2);
+        head.right = new C03_LevelTraversalBT.Node(3);
+        head.left.left = new C03_LevelTraversalBT.Node(4);
+        head.left.right = new C03_LevelTraversalBT.Node(5);
+        head.right.left = new C03_LevelTraversalBT.Node(6);
+        head.right.right = new C03_LevelTraversalBT.Node(7);
+
+        PrintStream oldOut = System.out;
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(baos));
+
+        C03_LevelTraversalBT.level(head);
+
+        String output = new String(baos.toByteArray());
+
+        assertEquals("1 2 3 4 5 6 7 \n", output);
+    }
 }
