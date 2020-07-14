@@ -73,4 +73,16 @@ public class C07_BasicTest {
 
         assertEquals("1 2 3 4 5 6 7 \n", output);
     }
+
+    @Test
+    public void TreeMaxWidthTest() {
+        C04_TreeMaxWidth.Node head = new C04_TreeMaxWidth.Node(1);
+        head.left = new C04_TreeMaxWidth.Node(2);
+        head.right = new C04_TreeMaxWidth.Node(3);
+        head.left.left = new C04_TreeMaxWidth.Node(4);
+        head.left.right = new C04_TreeMaxWidth.Node(5);
+        head.right.right = new C04_TreeMaxWidth.Node(6);
+
+        assertEquals(3, C04_TreeMaxWidth.maxWidthUseMap(head));
+    }
 }
