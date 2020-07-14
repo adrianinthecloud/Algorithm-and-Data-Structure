@@ -3,10 +3,12 @@ package com.osfocus.www.basic.C07;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.PrintStream;
+import java.util.LinkedList;
+import java.util.Queue;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class C07_BasicTest {
     @Test
@@ -93,5 +95,48 @@ public class C07_BasicTest {
             C04_TreeMaxWidth.Node bst = C04_TreeMaxWidth.generateRandomBST(maxLevel, maxValue);
             assertEquals(C04_TreeMaxWidth.maxWidthUseMap(head), C04_TreeMaxWidth.maxWidthWithoutMap(head));
         }
+    }
+
+    @Test
+    public void SerializeAndReconstructTreeTest() {
+        //        8
+        //    5       10
+        //   3 6     9  11
+        //  1   7
+        C05_SerializeAndReconstructTree.Node head = new C05_SerializeAndReconstructTree.Node(8);
+        head.left = new C05_SerializeAndReconstructTree.Node(5);
+        head.right = new C05_SerializeAndReconstructTree.Node(10);
+        head.left.left = new C05_SerializeAndReconstructTree.Node(3);
+        head.left.right = new C05_SerializeAndReconstructTree.Node(6);
+        head.left.left.left= new C05_SerializeAndReconstructTree.Node(1);
+        head.left.right.right = new C05_SerializeAndReconstructTree.Node(7);
+        head.right.left = new C05_SerializeAndReconstructTree.Node(9);
+        head.right.right = new C05_SerializeAndReconstructTree.Node(11);
+        C05_SerializeAndReconstructTree.prePrintTree(head);
+
+        Queue<String> res = new LinkedList<>();
+        Queue<String> res2 = new LinkedList<>();
+        C05_SerializeAndReconstructTree.pre(head, res);
+        C05_SerializeAndReconstructTree.levelSerialize(head, res2);
+        System.out.println();
+        for (String str : res) {
+            System.out.print(str + " ");
+        }
+
+        System.out.println();
+        for (String str : res2) {
+            System.out.print(str + " ");
+        }
+
+        C05_SerializeAndReconstructTree.Node levelDeserializedHead = C05_SerializeAndReconstructTree.levelDeserialize(res2);
+
+
+        System.out.println();
+        C05_SerializeAndReconstructTree.Node resume = C05_SerializeAndReconstructTree.preB(res);
+        System.out.println("Resume: ");
+        C05_SerializeAndReconstructTree.prePrintTree(resume);
+
+        assertTrue(C05_SerializeAndReconstructTree.equals(head, resume));
+        assertTrue(C05_SerializeAndReconstructTree.equals(head, levelDeserializedHead));
     }
 }
