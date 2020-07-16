@@ -2,12 +2,11 @@ package com.osfocus.www.basic.c08;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class C08_BasicTest {
     @Test
-    public void SuccessorNode() {
+    public void SuccessorNodeTest() {
         //              9
         //           6      13
         //         5   8  10   15
@@ -25,5 +24,25 @@ public class C08_BasicTest {
         assertEquals(head.left.right, C02_SuccessorNode.getSuccessorNode(head.left.right.left));
         assertEquals(head, C02_SuccessorNode.getSuccessorNode(head.left.right));
         assertTrue(C02_SuccessorNode.getSuccessorNode(head.right.right) == null);
+    }
+
+    @Test
+    public void isBalancedTest() {
+        //          9
+        //      5       13
+        //    2   6   11   16
+        //   1
+        C04_IsBalanced.Node head = new C04_IsBalanced.Node(9);
+        head.left = new C04_IsBalanced.Node(5);
+        assertTrue(C04_IsBalanced.isBalanced1(head));
+        head.left.left = new C04_IsBalanced.Node(2);
+        assertFalse(C04_IsBalanced.isBalanced1(head));
+        head.right = new C04_IsBalanced.Node(13);
+        assertTrue(C04_IsBalanced.isBalanced1(head));
+        head.left.right = new C04_IsBalanced.Node(6);
+        head.left.left.left = new C04_IsBalanced.Node(1);
+        head.right.left = new C04_IsBalanced.Node(11);
+        head.right.right = new C04_IsBalanced.Node(16);
+        assertTrue(C04_IsBalanced.isBalanced1(head));
     }
 }
