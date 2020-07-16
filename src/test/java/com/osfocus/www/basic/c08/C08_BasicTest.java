@@ -64,4 +64,29 @@ public class C08_BasicTest {
         head.right.right = new C05_MaxSubBSTSize.Node(16);
         assertTrue(C05_MaxSubBSTSize.getMaxBSTSize(head) == 3);
     }
+
+    @Test
+    public void MaxHappyTest() {
+        //                  Boss(100)
+        //        e1(70)     e2(30)      e3(50)
+        //   e4(35) e5(10)              e6(65)  e7(80)
+        C06_MaxHappy.Employee boss = new C06_MaxHappy.Employee(100);
+        C06_MaxHappy.Employee e1 = new C06_MaxHappy.Employee(70);
+        C06_MaxHappy.Employee e2 = new C06_MaxHappy.Employee(30);
+        C06_MaxHappy.Employee e3 = new C06_MaxHappy.Employee(50);
+        C06_MaxHappy.Employee e4 = new C06_MaxHappy.Employee(35);
+        C06_MaxHappy.Employee e5 = new C06_MaxHappy.Employee(10);
+        C06_MaxHappy.Employee e6 = new C06_MaxHappy.Employee(65);
+        C06_MaxHappy.Employee e7 = new C06_MaxHappy.Employee(80);
+        assertEquals(100, C06_MaxHappy.getMaxHappy(boss));
+        boss.subordinates.add(e1);
+        boss.subordinates.add(e2);
+        boss.subordinates.add(e3);
+        assertEquals(150, C06_MaxHappy.getMaxHappy(boss));
+        e1.subordinates.add(e4);
+        e1.subordinates.add(e5);
+        e3.subordinates.add(e6);
+        e3.subordinates.add(e7);
+        assertEquals(290, C06_MaxHappy.getMaxHappy(boss));
+    }
 }
