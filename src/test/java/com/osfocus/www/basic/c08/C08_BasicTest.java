@@ -45,4 +45,23 @@ public class C08_BasicTest {
         head.right.right = new C04_IsBalanced.Node(16);
         assertTrue(C04_IsBalanced.isBalanced1(head));
     }
+
+    @Test
+    public void MaxSubBSTSizeTest() {
+        //          9
+        //      5       13
+        //    2   3   11   16
+        //   1
+        C05_MaxSubBSTSize.Node head = new C05_MaxSubBSTSize.Node(9);
+        head.left = new C05_MaxSubBSTSize.Node(5);
+        head.right = new C05_MaxSubBSTSize.Node(13);
+        assertTrue(C05_MaxSubBSTSize.getMaxBSTSize(head) == 3);
+        head.left.left = new C05_MaxSubBSTSize.Node(2);
+        assertTrue(C05_MaxSubBSTSize.getMaxBSTSize(head) == 4);
+        head.left.right = new C05_MaxSubBSTSize.Node(3);
+        assertTrue(C05_MaxSubBSTSize.getMaxBSTSize(head) == 1);
+        head.right.left = new C05_MaxSubBSTSize.Node(11);
+        head.right.right = new C05_MaxSubBSTSize.Node(16);
+        assertTrue(C05_MaxSubBSTSize.getMaxBSTSize(head) == 3);
+    }
 }
